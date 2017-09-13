@@ -1,16 +1,34 @@
+require 'csv'
+require 'pry'
+
 class Wordfreq
   STOP_WORDS = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
     'has', 'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to',
     'were', 'will', 'with']
 
   def initialize(filename)
+    wordArray = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '').split(' ')
+    # wordArray.each do |word|
+    #     word = word.downcase
+    #     # word.gsub(/[^a-z0-9\s]/i, '')
+    #     # word.gsub(/\w+/)
+    # end
+      # remove "stop words" -- words used so frequently they are ignored
+
+      print wordArray[0..50]
+      # binding.pry
   end
+
+
 
 # Is this the related to test_freq_of_a_word on line 9?
+# go through the file word by word and keep a count of how often each word is used
   def frequency(word)
+    # create hash with word => frequencies
   end
 
-# In test file - line 31
+
+# In test file - line 24
   def frequencies
   end
 
