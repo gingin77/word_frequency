@@ -24,6 +24,11 @@ class Wordfreq
 
 # In test file - line 24
   def frequencies
+    frequencies = Hash.new 0
+      @word_array.each do |element|
+        frequencies[element] += 1
+      end
+      frequencies
   end
 
 # In test file - line 31
@@ -33,6 +38,7 @@ class Wordfreq
 # Is this the related to test_report on line 45?
   def print_report
   end
+  
 end
 
 if __FILE__ == $0
