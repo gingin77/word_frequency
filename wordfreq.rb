@@ -8,7 +8,9 @@ class Wordfreq
 
   def initialize(filename)
     @word_array = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, ' ').split(' ')
-    @word_array.delete_if {|word| STOP_WORDS.include?(word)}
+    stop_words2 = STOP_WORDS + ["she"]
+    @word_array.delete_if {|word| stop_words2.include?(word)}
+    # @word_array = @word_array - ["she"]
     # alt @word_array - STOP_WORDS
   end
 
@@ -37,11 +39,10 @@ class Wordfreq
       @word_array.each do |element|
         frequencies_hash[element] += 1
       end
-    sorted_hash = frequencies_hash.sort_by{|k,v| v}.reverse
-    sorted_hash[0..4]
+    sorted_hash = frequencies_hash.sort_by{|k,v| [v, -k] }.reverse
+    sorted_hash[0..(number-1)]
   end
 
-# Is this the related to test_report on line 45?
   def print_report
   end
 
