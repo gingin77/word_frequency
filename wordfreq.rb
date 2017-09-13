@@ -39,7 +39,7 @@ class Wordfreq
       @word_array.each do |element|
         frequencies_hash[element] += 1
       end
-    sorted_hash = frequencies_hash.sort_by{|k,v| [v, -k] }.reverse
+    sorted_hash = frequencies_hash.sort_by{|k,v| [-v, k] }
     sorted_hash[0..(number-1)]
   end
 
