@@ -7,14 +7,9 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
-    @word_array = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '').split(' ')
+    @word_array = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, ' ').split(' ')
     @word_array.delete_if {|word| STOP_WORDS.include?(word)}
-    # wordArray.reject do |word|
-    #   word == STOP_WORDS[0]
-    # end
-      # remove "stop words" -- words used so frequently they are ignored
-      # print @word_array[0..50]
-      # binding.pry
+    # alt @word_array - STOP_WORDS
   end
 
 
@@ -22,24 +17,8 @@ class Wordfreq
 # Is this the related to test_freq_of_a_word on line 9?
 # go through the file word by word and keep a count of how often each word is used
   def frequency(word)
-    count = @word_array.scan(word)
-    p count
-
-
-
-
-
-
-    # print " \n"
-    # print @word_array[0..50]
-    #
-    # counts = Hash.new 0
-    # @word_array.each do |word|
-    #   counts[word] += 1
-    #   counts
-    # end
-    # print counts
-    # create hash with word => frequencies
+    freq = @word_array.count(word)
+    freq
   end
 
 
