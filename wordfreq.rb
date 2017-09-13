@@ -24,20 +24,21 @@ class Wordfreq
 
 # In test file - line 24
   def frequencies
-    @@frequencies_hash = Hash.new 0
+    frequencies_hash = Hash.new 0
       @word_array.each do |element|
-        @@frequencies_hash[element] += 1
+        frequencies_hash[element] += 1
       end
-        # print @frequencies_hash
-      @@frequencies_hash
+      frequencies_hash
   end
 
 # In test file - line 31
   def top_words(number)
-    # print @@frequencies_hash
-    sorted_hash = @@frequencies_hash.sort_by{|k,v| v}.reverse
-    sorted_hash[0..3]
-    # binding.pry
+    frequencies_hash = Hash.new 0
+      @word_array.each do |element|
+        frequencies_hash[element] += 1
+      end
+    sorted_hash = frequencies_hash.sort_by{|k,v| v}.reverse
+    sorted_hash[0..4]
   end
 
 # Is this the related to test_report on line 45?
