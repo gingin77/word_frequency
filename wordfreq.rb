@@ -31,7 +31,7 @@ class Wordfreq
   def print_report
     @array_for_sorted_hash[0..9].each do |key, value|
       stars = "*" * value
-      holder = (" " * (7 - key.length))
+      holder = (" " * (8 - key.length))
       string = (holder + "#{key} | #{value} "+ stars + "\n")
       print string
       # binding.pry
