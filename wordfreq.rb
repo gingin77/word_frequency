@@ -3,7 +3,7 @@ require 'pry'
 
 class Wordfreq
   STOP_WORDS = ['a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from',
-    'has', 'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to',
+    'has', 'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on','she', 'that', 'the', 'to',
     'were', 'will', 'with']
 
   def initialize(filename)
@@ -29,7 +29,8 @@ class Wordfreq
   end
 
   def print_report
-    @array_for_sorted_hash[0..9].each do |key, value|
+    @array_for_sorted_hash[0..10].each do |key, value|
+      [-value, key]
       stars = "*" * value
       holder = (" " * (8 - key.length))
       string = (holder + "#{key} | #{value} "+ stars + "\n")
