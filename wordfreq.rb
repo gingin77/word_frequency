@@ -8,42 +8,28 @@ class Wordfreq
 
   def initialize(filename)
     @word_array = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, ' ').split(' ')
-    stop_words2 = STOP_WORDS + ["she"]
-    @word_array.delete_if {|word| stop_words2.include?(word)}
-    # @word_array = @word_array - ["she"]
-    # alt @word_array - STOP_WORDS
+    @word_array.delete_if {|word| STOP_WORDS.include?(word)}
+    @frequencies_hash = Hash.new 0
+    @word_array.each do |element|
+        @frequencies_hash[element] += 1
+      end
+    @array_for_sorted_hash = @frequencies_hash.sort_by{|k,v| [-v, k] }
   end
 
-
-
-# Is this the related to test_freq_of_a_word on line 9?
-# go through the file word by word and keep a count of how often each word is used
   def frequency(word)
-    freq = @word_array.count(word)
-    freq
+    @word_array.count(word)
   end
 
-
-# In test file - line 24
   def frequencies
-    frequencies_hash = Hash.new 0
-      @word_array.each do |element|
-        frequencies_hash[element] += 1
-      end
-      frequencies_hash
+      @frequencies_hash
   end
 
-# In test file - line 31
   def top_words(number)
-    frequencies_hash = Hash.new 0
-      @word_array.each do |element|
-        frequencies_hash[element] += 1
-      end
-    sorted_hash = frequencies_hash.sort_by{|k,v| [-v, k] }
-    sorted_hash[0..(number-1)]
+    @array_for_sorted_hash[0..(number-1)]
   end
 
   def print_report
+    print @array_for_sorted_hash
   end
 
 end
