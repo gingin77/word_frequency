@@ -29,11 +29,12 @@ class Wordfreq
   end
 
   def print_report
-    @array_for_sorted_hash[0..10].each do |key, value|
+    report_array = @array_for_sorted_hash[0..10]
+    rjust_value = 1 + ((report_array.max_by { |k, v| k.length })[1])
+    report_array.each do |key, value|
       [-value, key]
       stars = "*" * value
-      holder = 8 - key.length << needs to be set to find length of the longest key.....
-      string = ("#{key.rjust(holder)} | #{value.to_s.ljust(2)} "+ stars + "\n")
+      string = ("#{key.rjust(rjust_value)} | #{value.to_s.ljust(2)} "+ stars + "\n")
       print string
     end
   end

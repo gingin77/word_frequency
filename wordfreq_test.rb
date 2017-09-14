@@ -43,7 +43,6 @@ class WordfreqTest < Minitest::Test
   end
 
   def test_report
-    # skip
     expected_output = <<EOF
     her | 33 *********************************
     all | 12 ************
