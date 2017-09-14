@@ -10,9 +10,9 @@ class Wordfreq
     @word_array = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, ' ').split(' ')
     @word_array.delete_if {|word| STOP_WORDS.include?(word)}
     @frequencies_hash = Hash.new 0
-    @word_array.each do |element|
-        @frequencies_hash[element] += 1
-      end
+      @word_array.each do |element|
+          @frequencies_hash[element] += 1
+        end
     @array_for_sorted_hash = @frequencies_hash.sort_by{|k,v| [-v, k] }
   end
 
@@ -29,9 +29,13 @@ class Wordfreq
   end
 
   def print_report
-    print @array_for_sorted_hash
+    @array_for_sorted_hash[0..10].each do |key, value|
+      stars = "*" * value
+      holder = " " * (8 - key.length)
+      print holder + "#{key} | #{value} "+ stars + "\n"
+      # binding.pry
+    end
   end
-
 end
 
 if __FILE__ == $0
