@@ -32,8 +32,8 @@ class Wordfreq
     @array_for_sorted_hash[0..10].each do |key, value|
       [-value, key]
       stars = "*" * value
-      holder = (" " * (8 - key.length))
-      string = ("#{key.rjust(7)} | #{value.to_s.ljust(2)} "+ stars + "\n")
+      holder = 8 - key.length << needs to be set to find length of the longest key.....
+      string = ("#{key.rjust(holder)} | #{value.to_s.ljust(2)} "+ stars + "\n")
       print string
     end
   end
