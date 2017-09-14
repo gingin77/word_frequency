@@ -33,9 +33,8 @@ class Wordfreq
       [-value, key]
       stars = "*" * value
       holder = (" " * (8 - key.length))
-      string = (holder + "#{key} | #{value} "+ stars + "\n")
+      string = ("#{key.rjust(7)} | #{value.to_s.ljust(2)} "+ stars + "\n")
       print string
-      # binding.pry
     end
   end
 end
